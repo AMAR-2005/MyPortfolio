@@ -10,6 +10,22 @@ const chokidar = require('chokidar')
 const program = require('commander')
 const http = require('http')
 const SocketIO = require('socket.io')
+
+// Suppress ECONNRESET and EPIPE noise from broken streams/sockets
+process.on('uncaughtException', (err) => {
+  if (err.code === 'ECONNRESET' || err.code === 'EPIPE') {
+    // console.log('Suppressed socket error:', err.message)
+    return
+  }
+  console.error('Uncaught Exception:', err)
+})
+
+process.on('unhandledRejection', (reason, p) => {
+  if (reason && (reason.code === 'ECONNRESET' || reason.code === 'EPIPE')) {
+    return
+  }
+  console.error('Unhandled Rejection at:', p, 'reason:', reason)
+})
 const express = require('express')
 const spawn = require('child_process').spawn
 const next = require('next')
