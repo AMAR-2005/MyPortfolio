@@ -1,27 +1,16 @@
 import { Menu, Transition } from '@headlessui/react'
 import {
   ArchiveIcon,
-  BarChartIcon,
-  CalendarIcon,
-  ChatBubbleIcon,
   CodeIcon,
-  DiscIcon,
-  DrawingPinIcon,
-  EnterIcon,
-  FrameIcon,
   HamburgerMenuIcon,
   HomeIcon,
-  LaptopIcon,
   Link2Icon,
-  Pencil1Icon,
   PersonIcon,
-  QuoteIcon,
-  RocketIcon,
-  TwitterLogoIcon,
+  RocketIcon
 } from '@radix-ui/react-icons'
 import classNames from 'classnames'
 import { motion } from 'framer-motion'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import { Fragment, useState } from 'react'
 import useSound from 'use-sound'
 import Link from './Link'
@@ -74,111 +63,131 @@ export default function DropMenu() {
           ThemeSound()
         }}
       >
-       <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-zinc-300 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:divide-zinc-700 dark:bg-zinc-800">
-  <div className="py-1">
+        <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-zinc-300 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:divide-zinc-700 dark:bg-zinc-800">
+          <div className="py-1">
 
-    {/* HOME */}
-    <Menu.Item>
-      {({ active }) => (
-        <Link href="/">
-          <a
-            className={classNames(
-              active
-                ? 'bg-gray-200 text-gray-700 dark:bg-zinc-700 dark:text-gray-300'
-                : 'bg-white text-zinc-700 hover:bg-gray-300 dark:bg-zinc-800 dark:text-gray-200 dark:hover:bg-zinc-700',
-              'block px-4 py-2 text-sm'
-            )}
-          >
-            <div className="flex flex-row">
-              <HomeIcon className="mr-4 mt-0.5" /> Home
-            </div>
-          </a>
-        </Link>
-      )}
-    </Menu.Item>
+            {/* HOME */}
+            <Menu.Item>
+              {({ active }) => (
+                <Link href="/">
+                  <a
+                    className={classNames(
+                      active
+                        ? 'bg-gray-200 text-gray-700 dark:bg-zinc-700 dark:text-gray-300'
+                        : 'bg-white text-zinc-700 hover:bg-gray-300 dark:bg-zinc-800 dark:text-gray-200 dark:hover:bg-zinc-700',
+                      'block px-4 py-2 text-sm'
+                    )}
+                  >
+                    <div className="flex flex-row">
+                      <HomeIcon className="mr-4 mt-0.5" /> Home
+                    </div>
+                  </a>
+                </Link>
+              )}
+            </Menu.Item>
 
-    {/* ABOUT */}
-    <Menu.Item>
-      {({ active }) => (
-        <Link href="/about">
-          <a
-            className={classNames(
-              active
-                ? 'bg-gray-200 text-gray-700 dark:bg-zinc-700 dark:text-gray-300'
-                : 'bg-white text-zinc-700 hover:bg-gray-300 dark:bg-zinc-800 dark:text-gray-200 dark:hover:bg-zinc-700',
-              'block px-4 py-2 text-sm'
-            )}
-          >
-            <div className="flex flex-row">
-              <PersonIcon className="mr-4 mt-0.5" /> About
-            </div>
-          </a>
-        </Link>
-      )}
-    </Menu.Item>
+            {/* ABOUT */}
+            <Menu.Item>
+              {({ active }) => (
+                <Link href="/about">
+                  <a
+                    className={classNames(
+                      active
+                        ? 'bg-gray-200 text-gray-700 dark:bg-zinc-700 dark:text-gray-300'
+                        : 'bg-white text-zinc-700 hover:bg-gray-300 dark:bg-zinc-800 dark:text-gray-200 dark:hover:bg-zinc-700',
+                      'block px-4 py-2 text-sm'
+                    )}
+                  >
+                    <div className="flex flex-row">
+                      <PersonIcon className="mr-4 mt-0.5" /> About
+                    </div>
+                  </a>
+                </Link>
+              )}
+            </Menu.Item>
 
-    {/* SKILLS */}
-    <Menu.Item>
-      {({ active }) => (
-        <Link href="/skills">
-          <a
-            className={classNames(
-              active
-                ? 'bg-gray-200 text-gray-700 dark:bg-zinc-700 dark:text-gray-300'
-                : 'bg-white text-zinc-700 hover:bg-gray-300 dark:bg-zinc-800 dark:text-gray-200 dark:hover:bg-zinc-700',
-              'block px-4 py-2 text-sm'
-            )}
-          >
-            <div className="flex flex-row">
-              <CodeIcon className="mr-4 mt-0.5" /> Skills
-            </div>
-          </a>
-        </Link>
-      )}
-    </Menu.Item>
+            {/* SKILLS */}
+            <Menu.Item>
+              {({ active }) => (
+                <Link href="/skills">
+                  <a
+                    className={classNames(
+                      active
+                        ? 'bg-gray-200 text-gray-700 dark:bg-zinc-700 dark:text-gray-300'
+                        : 'bg-white text-zinc-700 hover:bg-gray-300 dark:bg-zinc-800 dark:text-gray-200 dark:hover:bg-zinc-700',
+                      'block px-4 py-2 text-sm'
+                    )}
+                  >
+                    <div className="flex flex-row">
+                      <CodeIcon className="mr-4 mt-0.5" /> Skills
+                    </div>
+                  </a>
+                </Link>
+              )}
+            </Menu.Item>
 
-    {/* PROJECTS */}
-    <Menu.Item>
-      {({ active }) => (
-        <Link href="/projects">
-          <a
-            className={classNames(
-              active
-                ? 'bg-gray-200 text-gray-700 dark:bg-zinc-700 dark:text-gray-300'
-                : 'bg-white text-zinc-700 hover:bg-gray-300 dark:bg-zinc-800 dark:text-gray-200 dark:hover:bg-zinc-700',
-              'block px-4 py-2 text-sm'
-            )}
-          >
-            <div className="flex flex-row">
-              <ArchiveIcon className="mr-4 mt-0.5" /> Projects
-            </div>
-          </a>
-        </Link>
-      )}
-    </Menu.Item>
+            {/* PROJECTS */}
+            <Menu.Item>
+              {({ active }) => (
+                <Link href="/projects">
+                  <a
+                    className={classNames(
+                      active
+                        ? 'bg-gray-200 text-gray-700 dark:bg-zinc-700 dark:text-gray-300'
+                        : 'bg-white text-zinc-700 hover:bg-gray-300 dark:bg-zinc-800 dark:text-gray-200 dark:hover:bg-zinc-700',
+                      'block px-4 py-2 text-sm'
+                    )}
+                  >
+                    <div className="flex flex-row">
+                      <ArchiveIcon className="mr-4 mt-0.5" /> Projects
+                    </div>
+                  </a>
+                </Link>
+              )}
+            </Menu.Item>
 
-    {/* CONTACT */}
-    <Menu.Item>
-      {({ active }) => (
-        <Link href="/contact">
-          <a
-            className={classNames(
-              active
-                ? 'bg-gray-200 text-gray-700 dark:bg-zinc-700 dark:text-gray-300'
-                : 'bg-white text-zinc-700 hover:bg-gray-300 dark:bg-zinc-800 dark:text-gray-200 dark:hover:bg-zinc-700',
-              'block px-4 py-2 text-sm'
-            )}
-          >
-            <div className="flex flex-row">
-              <Link2Icon className="mr-4 mt-0.5" /> Contact
-            </div>
-          </a>
-        </Link>
-      )}
-    </Menu.Item>
+            {/* CERTIFICATES */}
+            <Menu.Item>
+              {({ active }) => (
+                <Link href="/certificates">
+                  <a
+                    className={classNames(
+                      active
+                        ? 'bg-gray-200 text-gray-700 dark:bg-zinc-700 dark:text-gray-300'
+                        : 'bg-white text-zinc-700 hover:bg-gray-300 dark:bg-zinc-800 dark:text-gray-200 dark:hover:bg-zinc-700',
+                      'block px-4 py-2 text-sm'
+                    )}
+                  >
+                    <div className="flex flex-row">
+                      <RocketIcon className="mr-4 mt-0.5" /> Certificates
+                    </div>
+                  </a>
+                </Link>
+              )}
+            </Menu.Item>
 
-  </div>
-</Menu.Items>
+            {/* CONTACT */}
+            <Menu.Item>
+              {({ active }) => (
+                <Link href="/contact">
+                  <a
+                    className={classNames(
+                      active
+                        ? 'bg-gray-200 text-gray-700 dark:bg-zinc-700 dark:text-gray-300'
+                        : 'bg-white text-zinc-700 hover:bg-gray-300 dark:bg-zinc-800 dark:text-gray-200 dark:hover:bg-zinc-700',
+                      'block px-4 py-2 text-sm'
+                    )}
+                  >
+                    <div className="flex flex-row">
+                      <Link2Icon className="mr-4 mt-0.5" /> Contact
+                    </div>
+                  </a>
+                </Link>
+              )}
+            </Menu.Item>
+
+          </div>
+        </Menu.Items>
       </Transition>
     </Menu>
   )

@@ -26,7 +26,7 @@ const contacts = [
   },
   {
     name: 'LeetCode',
-    value: 'AMAR-2005',
+    value: 'AMARNATH_2005',
     href: 'https://leetcode.com/u/AMARNATH_2005/',
     icon: <SiLeetcode className="text-2xl" />,
     color: 'from-yellow-500 to-orange-500',
@@ -60,7 +60,7 @@ export default function Contact() {
               href={contact.href}
               target="_blank"
               rel="noopener noreferrer"
-            className="group relative flex items-center gap-4 rounded-xl border border-gray-200 bg-gradient-to-r from-white via-white to-indigo-100 bg-[length:200%_100%] bg-left p-6 shadow-sm transition-all duration-500 hover:bg-right hover:scale-[1.03] hover:shadow-xl dark:border-gray-700 dark:from-zinc-800 dark:via-zinc-800 dark:to-indigo-900"
+            className="group relative flex items-center gap-4 rounded-xl border border-gray-400 bg-gradient-to-r from-white via-white to-indigo-100 bg-[length:200%_100%] bg-left p-6 shadow-sm transition-all duration-500 hover:bg-right hover:scale-[1.03] hover:shadow-xl dark:border-gray-700 dark:from-zinc-800 dark:via-zinc-800 dark:to-slate-900"
             >
 
               {/* Icon */}
@@ -76,7 +76,7 @@ export default function Contact() {
                   {contact.name}
                 </h3>
 
-                <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-indigo-500">
+                <p className="text-sm text-gray-600 dark:text-gray-300 ">
                   {contact.value}
                 </p>
               </div>
