@@ -1,19 +1,24 @@
-import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
+import { navigation } from '@/data/nav'
+import siteMetadata from '@/data/siteMetadata'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useRouter } from 'next/router'
+import Typewriter from 'typewriter-effect'
+import CommandPalette from './CommandPalette'
+import DropMenu from './DropMenu.js'
+import Footer from './Footer'
 import Link from './Link'
 import SectionContainer from './SectionContainer'
-import Footer from './Footer'
-import { navigation } from '@/data/nav'
-import CommandPalette from './CommandPalette'
 import ThemeSwitch from './ThemeSwitch'
-import Typewriter from 'typewriter-effect'
-import { useRouter } from 'next/router'
-import DropMenu from './DropMenu.js'
-// import Logo from '@/data/logo.svg'
-// import MobileNav from './MobileNav'
 
 const LayoutWrapper = ({ children }) => {
   const router = useRouter()
+
+  const variants = {
+    hidden: { opacity: 0, x: 0, y: 20 },
+    enter: { opacity: 1, x: 0, y: 0 },
+    exit: { opacity: 0, x: 0, y: -20 },
+  }
 
   return (
     <SectionContainer>
@@ -21,18 +26,6 @@ const LayoutWrapper = ({ children }) => {
         <header className="flex items-center justify-between py-10">
           <div>
             <Link href="/" aria-label={siteMetadata.headerTitle}>
-              {/* <div className="flex items-center justify-between">
-                <div className="mr-1">
-                  <Logo />
-                </div>
-                {typeof siteMetadata.headerTitle === 'string' ? (
-                  <div className="hidden h-6 text-2xl font-semibold sm:block">
-                    {siteMetadata.headerTitle}
-                  </div>
-                ) : (
-                  siteMetadata.headerTitle
-                )}
-              </div> */}
               <div className="text-primary-color dark:text-primary-color-dark flex items-center justify-between text-xl font-semibold">
                 {`~${router.asPath}`}{' '}
                 <Typewriter
@@ -60,10 +53,21 @@ const LayoutWrapper = ({ children }) => {
             <CommandPalette navigation={navigation} />
             <ThemeSwitch />
             <DropMenu />
-            {/* <MobileNav /> */}
           </div>
         </header>
-        <main className="mb-auto">{children}</main>
+        <AnimatePresence exitBeforeEnter initial={false}>
+          <motion.main
+            key={router.route}
+            initial="hidden"
+            animate="enter"
+            exit="exit"
+            variants={variants}
+            transition={{ type: 'linear', duration: 0.4 }}
+            className="mb-auto"
+          >
+            {children}
+          </motion.main>
+        </AnimatePresence>
         <Footer />
       </div>
     </SectionContainer>

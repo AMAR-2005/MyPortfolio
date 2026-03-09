@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
-import { useTheme } from 'next-themes'
 import { motion } from 'framer-motion'
-import { HiSun, HiMoon } from 'react-icons/hi'
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
+import { HiMoon, HiSun } from 'react-icons/hi'
 import useSound from 'use-sound'
 
 const ThemeSwitch = () => {

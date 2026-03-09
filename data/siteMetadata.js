@@ -5,7 +5,7 @@ const siteMetadata = {
   description: 'My personal blog where I share my musings',
   snippets: 'Reuseable code snippets collected',
   language: 'en-us',
-  theme: 'system', // system, dark or light
+  theme: 'light', // system, dark or light
   siteUrl: 'https://musing.vercel.app',
   siteRepo: 'https://github.com/AMAR-2005',
   siteLogo: '/static/images/logo.png',

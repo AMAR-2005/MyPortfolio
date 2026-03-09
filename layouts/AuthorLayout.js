@@ -1,8 +1,7 @@
 import Image from '@/components/Image'
-import { PageSEO } from '@/components/SEO'
 import Link from '@/components/Link'
-import { RoughNotation } from 'react-rough-notation'
-import { AiOutlineLinkedin, AiOutlineTwitter } from 'react-icons/ai'
+import { PageSEO } from '@/components/SEO'
+import { AiOutlineLinkedin } from 'react-icons/ai'
 
 export default function AuthorLayout({ children, frontMatter }) {
   const {
@@ -10,13 +9,6 @@ export default function AuthorLayout({ children, frontMatter }) {
     avatar,
     occupation,
     company,
-    email,
-    twitter,
-    linkedin,
-    github,
-    text1,
-    text2,
-    text3,
   } = frontMatter
 
   return (
